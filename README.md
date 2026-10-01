@@ -16,15 +16,15 @@ npm --prefix web ci
 之后每次启动项目只需：
 
 ```powershell
-.\scripts\start.ps1
+.\scripts\start.bat
 ```
 
-脚本会自动重建本地样本，并在两个独立 PowerShell 窗口中启动后端和前端。可选参数：
+批处理脚本会自动重建本地样本，并在两个独立命令行窗口中启动后端和前端；也可以直接双击运行。可选参数：
 
 ```powershell
-.\scripts\start.ps1 -Install       # 同时安装/更新 Python 与前端依赖
-.\scripts\start.ps1 -SkipPrepare   # 跳过样本重建
-.\scripts\start.ps1 -OpenBrowser   # 启动后自动打开浏览器
+.\scripts\start.bat /install       # 同时安装/更新 Python 与前端依赖
+.\scripts\start.bat /skip-prepare   # 跳过样本重建
+.\scripts\start.bat /open-browser   # 启动后自动打开浏览器
 ```
 
 浏览器打开 `http://127.0.0.1:5173`；API 文档为 `http://127.0.0.1:8000/docs`。关闭脚本启动的两个服务窗口即可停止项目。
@@ -55,7 +55,7 @@ Node 验证环境 24.18.0，Python 3.12.7；若升级解析依赖，必须重验
 - `backend/paperx/`：FastAPI、Pydantic 契约、Provider 接口、保守解析器。
 - `backend/tests/`：坐标、契约、PDF Range、异常文件、真实论文与合成样本回归。
 - `web/`：React/TypeScript/PDF.js 验证界面、单元及浏览器测试。
-- `scripts/start.ps1`：Windows 一键启动脚本。
+- `scripts/start.bat`：Windows 一键启动脚本（不受 PowerShell 执行策略影响）。
 - `scripts/prepare_samples.py`：生成样本、真实解析、对比 pypdf、导出 schema/OpenAPI。
 - `tests/fixtures/`：原创建模样本、许可和人工预期值。
 - `data/`：本地产物，已忽略；可重新导出，勿提交含未公开论文的数据。
@@ -76,3 +76,5 @@ Node 验证环境 24.18.0，Python 3.12.7；若升级解析依赖，必须重验
 阶段 2：AI 设置/模型列表/真实翻译/质量检查。
 阶段 3–7：完整双栏阅读、同步、可信公式复制、笔记、语义搜索和交付回归。
 现在的目录/页码/覆盖层仅用于阶段 0 技术验证；右栏是提取的英文原文，不是译文。
+
+
