@@ -16,7 +16,7 @@ if not exist "%PYTHON%" (
     exit /b 1
 )
 
-where npm.exe >nul 2>&1
+where npm.cmd >nul 2>&1
 if errorlevel 1 (
     echo npm was not found. Install Node.js 24+ first.
     popd
@@ -53,10 +53,10 @@ if "%SKIP_PREPARE%"=="0" (
 )
 
 echo Starting backend at http://127.0.0.1:8000 ...
-start "Paperx Backend" "%ComSpec%" /k "cd /d ""%ROOT%"" ^&^& ""%PYTHON%"" -m uvicorn paperx.api:app --app-dir backend --host 127.0.0.1 --port 8000"
+start "Paperx Backend" /D "%ROOT%" "%PYTHON%" -m uvicorn paperx.api:app --app-dir backend --host 127.0.0.1 --port 8000
 
 echo Starting frontend at http://127.0.0.1:5173 ...
-start "Paperx Frontend" "%ComSpec%" /k "cd /d ""%ROOT%"" ^&^& npm --prefix web run dev"
+start "Paperx Frontend" /D "%ROOT%" npm.cmd --prefix web run dev
 
 if "%OPEN_BROWSER%"=="1" (
     timeout /t 2 /nobreak >nul
@@ -75,3 +75,5 @@ echo.
 echo Startup failed.
 popd
 exit /b 1
+
+
