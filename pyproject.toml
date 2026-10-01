@@ -1,0 +1,16 @@
+[project]
+name = "paperx"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Local-first bilingual research paper reader"
+
+[tool.pytest.ini_options]
+pythonpath = ["backend", "."]
+testpaths = ["backend/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

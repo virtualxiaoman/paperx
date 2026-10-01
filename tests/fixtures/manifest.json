@@ -1,0 +1,119 @@
+{
+  "license": "CC0-1.0 (original synthetic fixtures only)",
+  "generated_by": "scripts/generate_fixtures.py",
+  "samples": [
+    {
+      "file": "single-column.pdf",
+      "pages": 2,
+      "headings": [
+        {
+          "text": "Abstract",
+          "page": 1,
+          "x": 54,
+          "baseline_y_from_bottom": 740
+        },
+        {
+          "text": "1 Introduction",
+          "page": 1
+        },
+        {
+          "text": "2 Conclusion",
+          "page": 2
+        }
+      ],
+      "paragraph_expected": "Paragraph alpha and This visual line belong to one block"
+    },
+    {
+      "file": "multi-column.pdf",
+      "pages": 1,
+      "order": [
+        "1 Introduction",
+        "LEFT_1..LEFT_8",
+        "RIGHT_1..RIGHT_8"
+      ]
+    },
+    {
+      "file": "formula-dense.pdf",
+      "pages": 1,
+      "formulas": [
+        {
+          "number": "(1)",
+          "latex": "x=a+b"
+        },
+        {
+          "number": "(2)",
+          "latex": "y=x\\cdot x"
+        },
+        {
+          "number": "(3)",
+          "latex": "z=\\frac{x}{y}"
+        }
+      ],
+      "policy": "Expected LaTeX is human ground truth, never injected into parser output"
+    },
+    {
+      "file": "figure-table.pdf",
+      "pages": 1,
+      "figure_count": 1,
+      "table_count": 1,
+      "expected_limitation": "Only text is extracted; chart/table regions remain unrecognized"
+    },
+    {
+      "file": "scan-like.pdf",
+      "pages": 1,
+      "text_blocks": 0,
+      "expected_warning": "ocr_not_implemented"
+    },
+    {
+      "file": "paired-en.pdf",
+      "paired_with": "paired-zh.pdf",
+      "pages": 1,
+      "translation": "manually authored synthetic"
+    },
+    {
+      "file": "paired-zh.pdf",
+      "pages": 1,
+      "expected_text": "合成测试文档"
+    },
+    {
+      "file": "rotated.pdf",
+      "pages": 4,
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "unrotated_size": [
+        612,
+        792
+      ],
+      "expected_limitation": "Reading order on rotated text needs review"
+    }
+  ],
+  "user_paper": {
+    "path": "paper/nlp/Attention Is All You Need.pdf",
+    "redistribute": false,
+    "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "pages": 15,
+    "manual_landmarks": [
+      {
+        "page": 1,
+        "text": "Abstract"
+      },
+      {
+        "page": 2,
+        "text": "1 Introduction"
+      },
+      {
+        "page": 4,
+        "formula_number": "(1)",
+        "latex": "\\operatorname{Attention}(Q,K,V)=\\operatorname{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V"
+      },
+      {
+        "page": 5,
+        "formula_number": "(2)"
+      }
+    ]
+  }
+}
