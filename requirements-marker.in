@@ -1,0 +1,4 @@
+# Isolated Windows / CUDA 12.8 environment; see requirements-marker.lock.
+marker-pdf==1.9.3
+torch==2.10.0
+torchvision==0.25.0

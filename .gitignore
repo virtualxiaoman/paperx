@@ -19,3 +19,8 @@ web/playwright-report/
 
 *.tsbuildinfo
 /web/public/pdfjs/
+
+.venv-marker/
+
+# Local inference weights and model caches (never commit)
+/model/

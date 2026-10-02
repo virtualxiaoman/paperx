@@ -65,7 +65,7 @@ export default function App() {
           <h1>{sample?.paper.title}</h1><p className="subtitle">{doc.pages.length} 页 <span>·</span> {doc.blocks.length} 个结构块 <span>·</span> 原始 PDF 保留</p></div>
           <a className="pdf-link" href={`/api/samples/${sampleId}/pdf`} target="_blank" rel="noreferrer">原 PDF ↗</a>
         </div>
-        <div className="notice"><b>可行性验证</b><span>右侧为提取的原文，不是中文译文。公式未识别为 LaTeX，暂不允许复制。</span></div>
+        <div className="notice"><b>可行性验证</b><span>右侧为提取的原文，不是中文译文。公式未经人工核验，暂不允许复制。</span></div>
         <div className="lab-toolbar"><span className="live-dot"/>本地解析数据<span className="spacer"/>
           <button aria-label="上一页" disabled={page<=1} onClick={()=>{setPage(p=>p-1);setActive(null);}}>←</button>
           <label>页码 <select aria-label="页码" value={page} onChange={e=>{setPage(Number(e.target.value));setActive(null);}}>
@@ -83,7 +83,7 @@ export default function App() {
                 <div className="meta"><button onClick={()=>select(b)} aria-label={`定位块 ${b.id}`}>{b.type}</button><span>p.{b.page}</span></div>
                 {b.type==="heading"?<h2>{b.text}</h2>:<p>{b.text}</p>}
                 <code className="block-id">{b.id}</code>
-                {b.formula&&<div className="formula-warning">LaTeX 未识别 · 需要人工校正</div>}
+                {b.formula&&<div className="formula-warning">{b.formula.latex ? 'LaTeX 待核验' : 'LaTeX 未识别'} · 需要人工校正</div>}
                 {active===b.id&&<div className="coords">bbox: {Object.values(b.bbox).map(v=>v.toFixed(3)).join(" / ")}</div>}
               </article>)}
             </div>
